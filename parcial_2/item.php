@@ -3,11 +3,11 @@ require_once 'comparable.php';
 
 abstract class Item implements Comparable
 {
-    public $numberOfItems = 0;
-    public $id;
-    public $value;
-    public $name;
-    public $weight;
+    private static $numberOfItems = 0;
+    private $id;
+    private $value;
+    private $name;
+    private $weight;
 
     public static function getNumberOfItems(): int
     {
@@ -40,16 +40,48 @@ abstract class Item implements Comparable
         return -1;
     }
 
-    public function __toString(): string
+    public function toString()
     {
-        return "{$this->name} - Valor: {$this->value}, Peso: {$this->weight}";
+        return "Id: {$this->getId()} - {$this->name} - Valor: {$this->value}, Peso: {$this->weight}";
     }
 
-    public static function reset(): void
+    public static function reset()
     {
         self::$numberOfItems = 0;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    public function setValue(int $value)
+    {
+        $this->value = $value;
+    }
+
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(int $weight)
+    {
+        $this->weight = $weight;
+    }
 }
-?>

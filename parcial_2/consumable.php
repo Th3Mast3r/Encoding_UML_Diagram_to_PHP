@@ -17,12 +17,12 @@ class Consumable extends Item
     public function eat()
     {
         if (!$this->consumed && !$this->spoiled) {
-            return "No queda más de {$this->name} para consumir";
+            return "No queda más {$this->getName()} para consumir";
         }
         if ($this->spoiled) {
-            return "Comiste el {$this->name}.\nTe empiezas a sentir mal.";
+            return "Comiste tu {$this->getName()}.\nTe empiezas a sentir mal.";
         }
-        return "Comiste el {$this->name}.";
+        return "Comiste tu {$this->getName()}.";
     }
 
     public function use()
@@ -38,6 +38,11 @@ class Consumable extends Item
     public function isConsumed()
     {
         return $this->consumed;
+    }
+
+    public function isSpoiled()
+    {
+        return $this->spoiled;
     }
 }
 ?>

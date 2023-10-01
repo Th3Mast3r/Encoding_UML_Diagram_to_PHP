@@ -6,11 +6,11 @@ class ItemWeightComparator implements ItemComparator
 {
     public function compare(Item $first, Item $second): int
     {
-        if ($first->weight > $second->weight) {
+        if ($first->getWeight() > $second->getWeight()) {
             return 1;
         }
 
-        if ($first->weight === $second->weight) {
+        if ($first->getWeight() === $second->getWeight()) {
             return $first->compareTo($second);
         }
 

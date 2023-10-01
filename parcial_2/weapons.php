@@ -20,9 +20,14 @@ abstract class Weapon extends Item
         $this->durabilityModifier = 0;
     }
 
-    public function getDamage(): int
+    public function getDamage()
     {
         return $this->baseDamage + $this->damageModifier;
+    }
+
+    public function setDamage($baseDamage)
+    {
+        $this->baseDamage = $baseDamage;
     }
 
     public function getDurability()
@@ -30,30 +35,37 @@ abstract class Weapon extends Item
         return $this->baseDurability + $this->durabilityModifier;
     }
 
-    public function __toString(): string
+    public function setDurability($baseDurability)
+    {
+        $this->baseDurability = $baseDurability;
+    }
+
+    public function toString()
     {
         return sprintf(
             '%s - Valor: %d, Peso: %d, Daño: %d, Durabilidad: %d%%',
-            $this->name,
-            $this->value,
-            $this->weight,
+            $this->getName(),
+            $this->getValue(),
+            $this->getWeight(),
             $this->baseDamage,
             $this->baseDurability
         );
     }
+
+    public abstract function polish();
 
     public function use()
     {
         $effectiveDurability = $this->getDurability();
         if ($effectiveDurability <= 0) {
             $this->baseDurability -= self::MODIFIER_CHANGE_RATE;
-            return "No puedes usar tu {$this->name}, está roto.";
+            return "No puedes usar tu {$this->getName()}, está roto.";
         } else if ($effectiveDurability === 0.05) {
             $this->baseDurability -= self::MODIFIER_CHANGE_RATE;
-            return "Usaste tu {$this->name}, haciendo {$this->baseDamage} puntos de daño.\nTu {$this->name} se rompió.";
+            return "Usaste tu {$this->getName()}, haciendo {$this->baseDamage} puntos de daño.\nTu {$this->getName()} se rompió.";
         } else {
             $this->baseDurability -= self::MODIFIER_CHANGE_RATE;
-            return "Usaste tu {$this->name}, haciendo {$this->baseDamage} puntos de daño.";
+            return "Usaste tu {$this->getName()}, haciendo {$this->baseDamage} puntos de daño.";
         }
 
     }

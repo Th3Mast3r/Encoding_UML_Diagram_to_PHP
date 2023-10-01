@@ -18,14 +18,14 @@ class Inventory
             usort($this->items, [$comparator, 'compare']);
         } else {
             usort($this->items, function (Item $a, Item $b) {
-                return $b->weight - $a->weight;
+                return $b->getWeight() - $a->getWeight();
             });
         }
     }
 
-    public function __toString()
+    public function toString()
     {
-        return implode(', ', $this->items);
+        return implode(PHP_EOL . "", $this->items);
     }
 }
 ?>
