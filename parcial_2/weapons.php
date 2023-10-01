@@ -40,7 +40,7 @@ abstract class Weapon extends Item
         $this->baseDurability = $baseDurability;
     }
 
-    public function toString()
+    public function __toString()
     {
         return sprintf(
             '%s - Valor: %d, Peso: %d, Daño: %d, Durabilidad: %d%%',

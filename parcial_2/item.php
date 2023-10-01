@@ -40,7 +40,7 @@ abstract class Item implements Comparable
         return -1;
     }
 
-    public function toString()
+    public function __toString()
     {
         return "Id: {$this->getId()} - {$this->name} - Valor: {$this->value}, Peso: {$this->weight}";
     }

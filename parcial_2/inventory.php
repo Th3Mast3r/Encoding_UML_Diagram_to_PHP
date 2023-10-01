@@ -23,9 +23,14 @@ class Inventory
         }
     }
 
-    public function toString()
+    public function __toString()
     {
         return implode(PHP_EOL . "", $this->items);
+    }
+
+    public function length()
+    {
+        return count($this->items);
     }
 }
 ?>

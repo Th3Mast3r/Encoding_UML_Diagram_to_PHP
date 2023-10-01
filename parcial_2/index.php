@@ -29,17 +29,17 @@ $inventory->addItem($pizza);
 
 <hr>
 <h2>Inventario</h2>
-<pre><?php echo $inventory->toString() . PHP_EOL; ?></pre>
+<pre><?php echo $inventory->__toString() . PHP_EOL; ?></pre>
 
 <hr>
 <h2>Inventario ordenado por orden natural</h2>
 <?php echo $inventory->sort(); ?>
-<pre><?php echo $inventory->toString() . PHP_EOL; ?></pre>
+<pre><?php echo $inventory->__toString() . PHP_EOL; ?></pre>
 
 <hr>
 <h2>Inventario ordenado por peso</h2>
 <?php echo $inventory->sort(new ItemWeightComparator()); ?>
-<pre><?php echo $inventory->toString() . PHP_EOL; ?></pre>
+<pre><?php echo $inventory->__toString() . PHP_EOL; ?></pre>
 
 <hr>
 <h2>Uso de la espada</h2>
@@ -59,11 +59,11 @@ $inventory->addItem($pizza);
 
 <hr>
 <h2>Inventario</h2>
-<pre><?php echo $inventory->toString() . PHP_EOL; ?></pre>
+<pre><?php echo $inventory->__toString() . PHP_EOL; ?></pre>
 
 <hr>
 <h2>Numero de Items en el inventario</h2>
-<pre><?php echo $inventory ?></pre>
+<pre><?php echo $inventory->length() ?></pre>
 
 
 </body>
